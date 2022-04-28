@@ -1,15 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import './index.scss';
 import reportWebVitals from './reportWebVitals';
 import '@fontsource/open-sans-condensed'; // Defaults to weight 400.
 
+import App from './App';
+import { UserProvider } from './contexts/user.context.jsx';
+import { ProductProvider } from './contexts/product.context.jsx';
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <UserProvider>
+        <ProductProvider>
+          <App />
+        </ProductProvider>
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
